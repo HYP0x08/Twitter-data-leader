@@ -47,7 +47,7 @@ namespace XOX_Twitter
                             if (NowBoolOk)
                             {
                                 //导出图片
-                                Tools.OutImage();
+                                Tools.OutImage(NowBoolOk2);
                                 Console.WriteLine("");
                                 //重置数据
                                 NowBoolOk = false;

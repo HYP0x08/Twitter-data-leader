@@ -119,7 +119,6 @@ namespace XOX_Twitter
         }
         public static void ReadConfig()
         {
-            Twitter_API.dataList.m_data.Clear();
             Twitter_API.showList.m_showlist.Clear();
             Console.WriteLine("Read Config：Loging......");
             if (!File.Exists("TwitterConfig.conf"))
@@ -159,7 +158,7 @@ namespace XOX_Twitter
             Console.WriteLine("导入组合数：{0}", Twitter_API.showList.m_showlist.Count.ToString());
             Console.WriteLine("导入偶像数：{0}", Twitter_API.dataList.m_data.Count.ToString());
         }
-        public static void OutImage()
+        public static void OutImage(bool OutImageOk = false)
         {
             Console.WriteLine("正在构造基础函数....");
             Twitter_API.Getgraphql();
@@ -189,7 +188,7 @@ namespace XOX_Twitter
                     break;
             }
             var ReadShow = Twitter_API.showList;
-            //导出保存文件
+            if(!OutImageOk)
             OutDataimage(ReadShow, ReadData);
         }
         public static void OutDataimage(ShowDataList ReadShow, Dictionary<string, TwitterData> ReadData)

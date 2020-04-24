@@ -103,6 +103,7 @@ public class RequestHttpWebRequest
         catch (Exception ex)
         {
             HandException(ex, state);
+            GetResponseAsync(info, act);
         }
     }
     void EndRequest(IAsyncResult ar)
@@ -122,6 +123,7 @@ public class RequestHttpWebRequest
         catch (Exception ex)
         {
             HandException(ex, state);
+            EndRequest(ar);
         }
     }
     void EndResponse(IAsyncResult ar)
@@ -142,7 +144,7 @@ public class RequestHttpWebRequest
         catch (Exception ex)
         {
             HandException(ex, state);
-
+            EndResponse(ar);
         }
     }
     void ReadCallBack(IAsyncResult ar)
@@ -169,6 +171,7 @@ public class RequestHttpWebRequest
         catch (Exception ex)
         {
             HandException(ex, state);
+            ReadCallBack(ar);
         }
     }
     private void InitWebRequest(RequestInfo info, Action<ResponseInfo> act, out HttpWebRequest webRequest, out StateObject state)
